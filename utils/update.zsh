@@ -8,12 +8,12 @@ if [[ -s "$update_txt_file" ]]; then
 fi
 
 __update() {
-  update_results=$(_update)
+  update_results=$(update_dotfiles)
   if [[ -n "$update_results" ]]; then
     print "$update_results" > "$update_txt_file"
   fi
 }
 
-(nohup "$(update_dotfiles)" & exit) 2> /dev/null
+(nohup "$(__update)" & exit) 2> /dev/null
 
 cd "$_cur_dir" || exit 1

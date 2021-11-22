@@ -7,7 +7,7 @@ update_dotfiles() {
     rm "$update_txt_file"
   fi
   local dotfiles_update submodules_update
-  dotfiles_update=$(git fetch)
+  dotfiles_update=$(git pull origin HEAD)
   submodules_update=$(cd "$DOTFILES" && git submodule update "$1" --init --recursive --remote)
 
   if [[ -n "$dotfiles_update" ]]; then
