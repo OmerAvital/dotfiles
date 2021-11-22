@@ -1,8 +1,6 @@
-#.dotfiles
+# .dotfiles
 
----
-
-###Enhancements
+### Enhancements
 - Enhanced ZSH prompt
 - Syntax highlighting
 - Colored `ls`
@@ -10,12 +8,12 @@
 - `la` (see aliases) after `cd`
 - Auto-updates dotfiles and plugins
 
-###Other Changes
+### Other Changes
 - `.zsh_history` moved to `$DOTFILES/zsh/`.
 - `.viminfo` moved to `$DOTFILES/vim/`.
 - Vim also looks for colors and plugins in `$DOTFILES/vim/`
 
-###Aliases:
+### Aliases:
 | Name | Command | Description |
 |------|---------|-------------|
 | `ll` | `ls -l` | List files in the long format. |
@@ -27,7 +25,7 @@
 | `paste` | `pbpaste` |
 | `gs` | `git status -s -b` | Prints the status of the current branch in the short format. |
 
-###Functions:
+### Functions:
 | Name | Description |
 |------|------------|
 | `h $1` | Prints out the command history for the last `$1` commands. |
