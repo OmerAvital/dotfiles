@@ -37,7 +37,7 @@ __copy_file() {
       echo;
       if [[ $yn == "y" ]]; then
         mv "$HOME/$file" "$HOME/$file.old"
-        echo "${fg_bold[white]}Backed up $file to $file.old${reset_color}"
+        echo "${fg_bold[white]}Backed up ${fg_bold[yellow]}$file${fg_bold[white]} to ${fg_bold[yellow]}$file.old${reset_color}"
       fi
     fi
 }
