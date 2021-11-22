@@ -9,7 +9,7 @@ cd ~/.dotfiles || exit 1
 cur_location=$(dirname $(realpath $cur_pwd/$0))
 
 if [[ $cur_location != $HOME/.dotfiles ]]; then
-  echo -n "${fg_bold[yellow]}The .dotfiles folder is not in your home directory. Should I move it [Yn]?${reset_color} "
+  echo -n "${fg_bold[yellow]}The .dotfiles folder is not at ${fg_bold[green]}~/.dotfiles${fg_bold[yellow]}. Should I move it [Yn]?${reset_color} "
   read -q "?" yn
   echo;
   if [[ $yn == "y" ]]; then

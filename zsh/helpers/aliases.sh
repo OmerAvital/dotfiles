@@ -6,8 +6,8 @@ else
 fi
 
 alias ll='ls -l'
-alias l='ls -la'
 alias la='ls -A'
+alias l='ls -la'
 
 alias mv='nocorrect mv'       # no spelling correction on mv
 alias cp='nocorrect cp'       # no spelling correction on cp
@@ -17,3 +17,5 @@ alias now='date +%s'
 alias nowdt='date +"%Y-%m-%d %T"'
 
 alias copy=pbcopy
+alias paste=pbpaste
+alias gs='git status -s -b'
