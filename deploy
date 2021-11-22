@@ -1,0 +1,51 @@
+#!/usr/bin/env zsh
+
+autoload -U colors && colors
+
+cur_pwd=$(pwd)
+cd ~/.dotfiles || exit 1
+
+# Check .dotfiles location
+cur_location=$(dirname $(realpath $cur_pwd/$0))
+
+if [[ $cur_location != $HOME/.dotfiles ]]; then
+  echo -n "${fg_bold[yellow]}The .dotfiles folder is not in your home directory. Should I move it [Yn]?${reset_color} "
+  read -q "?" yn
+  echo;
+  if [[ $yn == "y" ]]; then
+    mv "$cur_location" "$HOME/.dotfiles"
+    echo "Moved .dotfiles folder from $cur_location to ${0:a:h}"
+  fi
+fi
+
+# Update dotfiles
+echo "${bg_bold[green]} Updating files... ${reset_color}"
+source utils/_update.sh
+update_dotfiles
+
+__copy_file() {
+  file=$1
+  if [[ -f ~/$file ]]; then
+      echo -n "${fg_bold[blue]}It looks like you already have a ${fg_bold[yellow]}$file${fg_bold[blue]} file. Should I back it up [Yn]?${reset_color} "
+      read -q "?" yn
+      echo;
+      if [[ $yn == "y" ]]; then
+        mv "$HOME/$file" "#HOME/$file.old"
+        echo "${fg_bold[white]}Backed up $file to $file.old${reset_color}"
+      fi
+    fi
+}
+
+__copy_file ".zshenv"
+echo "source $cur_location/zsh/.zshenv" > "$HOME/.zshenv"
+echo "${fg_bold[white]}Created ${fg_bold[yellow]}~/.zshenv${reset_color}"
+
+__copy_file ".zshrc"
+echo "source \$DOTFILES/zsh/.zshrc" > "$HOME/.zshrc"
+echo "${fg_bold[white]}Created ${fg_bold[yellow]}~/.zshrc${reset_color}"
+
+__copy_file ".vimrc"
+echo "source \$DOTFILES/vim/.vimrc" > "$HOME/.vimrc"
+echo "${fg_bold[white]}Created ${fg_bold[yellow]}~/.vimrc${reset_color}"
+
+cd "$cur_pwd" || exit 1

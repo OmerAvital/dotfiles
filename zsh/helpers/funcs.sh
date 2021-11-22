@@ -1,0 +1,66 @@
+# show history with timestamp
+h() {
+  history -f -$1
+}
+
+# run ls after cd
+chpwd() {
+  la
+}
+
+_print_fg() {
+  printf "\e[38;5;%sm%3s " $1 $1;
+}
+
+_print_bg() {
+  printf "\e[48;5;%sm%3s " $1 $1;
+}
+
+clrs() {
+  # https://www.ditig.com/256-colors-cheat-sheet
+  # FOREGROUND COLORS
+  # Standard colors
+  for COLOR in {0..7}; do
+    _print_fg $COLOR;
+  done;
+  echo;
+  # High intensity colors
+  for COLOR in {8..15}; do
+    _print_fg $COLOR;
+  done;
+  echo;
+  # 216 colors
+  for COLOR in {16..231}; do
+    _print_fg $COLOR;
+  done;
+  echo;
+  # Grayscale colors
+  for COLOR in {232..255}; do
+    _print_fg $COLOR;
+  done;
+  echo;
+
+  echo;
+
+  # BACKGROUND COLORS
+  # Standard colors
+    for COLOR in {0..7}; do
+      _print_bg $COLOR;
+    done;
+    echo;
+    # High intensity colors
+    for COLOR in {8..15}; do
+      _print_bg $COLOR;
+    done;
+    echo;
+    # 216 colors
+    for COLOR in {16..231}; do
+      _print_bg $COLOR;
+    done;
+    echo;
+    # Grayscale colors
+    for COLOR in {232..255}; do
+      _print_bg $COLOR;
+    done;
+    echo;
+}

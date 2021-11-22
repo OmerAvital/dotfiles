@@ -1,0 +1,9 @@
+/.DS_Store/
+
+# Generated when checking for updates
+/utils/update.txt
+/nohup.out
+
+# History files
+/zsh/.zsh_history
+/vim/.viminfo
