@@ -8,7 +8,7 @@ update_dotfiles() {
   fi
   local dotfiles_update submodules_update
   dotfiles_update=$(git fetch)
-  submodules_update=$(cd "$DOTFILES" && git submodule update --recursive --remote)
+  submodules_update=$(cd "$DOTFILES" && git submodule update "$1" --init --recursive --remote)
 
   if [[ -n "$dotfiles_update" ]]; then
     print "${bg_bold[blue]} Dotfiles updated\! ${reset_color}"

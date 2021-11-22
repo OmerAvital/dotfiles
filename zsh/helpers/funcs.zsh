@@ -1,11 +1,12 @@
+# run ls after cd
+chpwd() {
+  clear
+  la
+}
+
 # show history with timestamp
 h() {
   history -f -$1
-}
-
-# run ls after cd
-chpwd() {
-  la
 }
 
 _print_fg() {
@@ -14,6 +15,15 @@ _print_fg() {
 
 _print_bg() {
   printf "\e[48;5;%sm%3s " $1 $1;
+}
+
+# Times the ZSH startup 10 times
+timezsh() {
+  local shell
+  shell=${1-$SHELL}
+  for _ in {1..10}; do
+    /usr/bin/time "$shell" -i -c exit
+  done
 }
 
 clrs() {

@@ -20,8 +20,14 @@ fi
 
 # Update dotfiles
 echo "${bg_bold[green]} Updating files... ${reset_color}"
-source utils/_update.sh
+source utils/_update.zsh
 update_dotfiles
+
+# Check if coreutils is installed
+if ! gls --version &> /dev/null; then
+  echo "${fg_bold[green]}Installing coreutils...${reset_color}"
+  brew install coreutils
+fi
 
 __copy_file() {
   file=$1
@@ -30,7 +36,7 @@ __copy_file() {
       read -q "?" yn
       echo;
       if [[ $yn == "y" ]]; then
-        mv "$HOME/$file" "#HOME/$file.old"
+        mv "$HOME/$file" "$HOME/$file.old"
         echo "${fg_bold[white]}Backed up $file to $file.old${reset_color}"
       fi
     fi
@@ -49,3 +55,4 @@ echo "source \$DOTFILES/vim/.vimrc" > "$HOME/.vimrc"
 echo "${fg_bold[white]}Created ${fg_bold[yellow]}~/.vimrc${reset_color}"
 
 cd "$cur_pwd" || exit 1
+exec zsh
