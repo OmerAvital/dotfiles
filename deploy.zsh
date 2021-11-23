@@ -6,7 +6,7 @@ cur_pwd=$(pwd)
 cd ~/.dotfiles || exit 1
 
 # Check .dotfiles location
-cur_location=$(dirname $(realpath $cur_pwd/$0))
+cur_location=$(dirname "$(realpath $cur_pwd/$0)")
 
 if [[ $cur_location != $HOME/.dotfiles ]]; then
   echo -n "${fg_bold[yellow]}The .dotfiles folder is not at ${fg_bold[green]}~/.dotfiles${fg_bold[yellow]}. Should I move it [Yn]?${reset_color} "
@@ -18,17 +18,36 @@ if [[ $cur_location != $HOME/.dotfiles ]]; then
   fi
 fi
 
-# Update dotfiles
+# Check for updates
 echo "${bg_bold[green]} Updating files... ${reset_color}"
 source utils/_update.zsh
 update_dotfiles
 
+install_brew() {
+  loccal should_install_brew
+
+  if ! which brew &> /dev/null && [[ $1 != "true" ]]; then
+    echo "${fg_bold[white]}Homebrew isn't installed on your computer. Would you like me to install it [yn]? ${reset_color}"
+    read -q "?" should_install_brew
+  fi
+
+  if [[ $1 == "true" ]] || [[ $should_install_brew == "y" ]]; then
+    echo "${bg_bold[green]}Installing Homebrew...${reset_color}"
+    /bin/bash "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+}
+install_brew
+
 # Check if coreutils is installed
-if ! gls --version &> /dev/null; then
-  echo "${fg_bold[green]}Installing coreutils...${reset_color}"
+if ! which gls &> /dev/null; then
+  install_brew true
+  echo "${bg_bold[green]}Installing coreutils...${reset_color}"
   brew install coreutils
+else
+  install_brew
 fi
 
+# Update dotfiles
 __copy_file() {
   file=$1
   if [[ -f ~/$file ]]; then

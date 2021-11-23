@@ -25,6 +25,8 @@ source "$DOTFILES/zsh/helpers/funcs.zsh"
 source "$DOTFILES/zsh/helpers/prompt.zsh"
 # completion
 source "$DOTFILES/zsh/helpers/completion.zsh"
+# Colored man pages
+source "$DOTFILES/zsh/helpers/colored-man-pages.zsh"
 
 # PLUGINS ---------------------------------------------------------------------
 # autosuggestions
