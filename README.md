@@ -1,17 +1,23 @@
 # .dotfiles
 
-### Enhancements
-- Enhanced ZSH prompt
-- Syntax highlighting
-- Colored `ls`
-- Autosuggestions
-- `la` (see aliases) after `cd`
+##Install Directions
+Run the `deploy.zsh` script and follow the prompts.
+
+
+## General
 - Auto-updates dotfiles and plugins
 
-### Other Changes
-- `.zsh_history` moved to `$DOTFILES/zsh/`.
-- `.viminfo` moved to `$DOTFILES/vim/`.
-- Vim also looks for colors and plugins in `$DOTFILES/vim/`
+
+## ZSH
+### Enhancements
+- Enhanced ZSH prompt
+- Enhanced completions
+- Syntax highlighting
+- Colored `ls`
+- Colored man pages
+- Autosuggestions
+- `la` (see aliases) after `cd`
+- `.zsh_history` moved to `$DOTFILES/zsh/` (to avoid cluttering the home directory).
 
 ### Aliases:
 | Name | Command | Description |
@@ -30,8 +36,27 @@
 |------|------------|
 | `h $1` | Prints out the command history for the last `$1` commands. |
 | `clrs` | Prints out all of the foreground/background colors from 1-255 that can be used. |
-| `tab` | Creates a new terminal tab (works in terminal, iTerm, iTerm2, and Hyper). |
-| `split_tab` | Creates a vertical split (works in terminal, iTerm, iTerm2, and Hyper). |
-| `hsplit_tab` | Creates a horizontal split (works in terminal, iTerm, iTerm2, and Hyper). |
+| `tab` | Creates a new terminal tab¹. |
+| `split_tab` | Creates a vertical split¹. |
+| `hsplit_tab` | Creates a horizontal split¹. |
 | `pfd` | Prints the directory of the frontmost `Finder` window. |
 | `cfd` | `cd`'s to the directory of the frontmost `Finder` window. |
+
+¹Works in terminal, iTerm, iTerm2, and Hyper
+
+
+## Vim
+### Enhancements
+- Syntax highlighting
+- `.viminfo` moved to `$DOTFILES/vim/`(to avoid cluttering the home directory).
+- Looks for colors and plugins in `$DOTFILES/vim/` in addition to the default locations.
+
+
+## TODO
+###General
+- Install homebrew, python, node, etc. on install.
+
+###VIM
+- Code completion in Vim
+- Choose (or create) color theme
+

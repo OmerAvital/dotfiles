@@ -24,14 +24,14 @@ source utils/_update.zsh
 update_dotfiles
 
 install_brew() {
-  loccal should_install_brew
+  local yn
 
-  if ! which brew &> /dev/null && [[ $1 != "true" ]]; then
+  if ! which brew &> /dev/null && [[ $1 != true ]]; then
     echo "${fg_bold[white]}Homebrew isn't installed on your computer. Would you like me to install it [yn]? ${reset_color}"
-    read -q "?" should_install_brew
+    read -q "?" yn
   fi
 
-  if [[ $1 == "true" ]] || [[ $should_install_brew == "y" ]]; then
+  if [[ $yn == y ]] || [[ $0 == true ]]; then
     echo "${bg_bold[green]}Installing Homebrew...${reset_color}"
     /bin/bash "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
