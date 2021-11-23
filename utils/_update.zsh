@@ -7,11 +7,10 @@ update_dotfiles() {
     rm "$update_txt_file"
   fi
   local dotfiles_update submodules_update
-  dotfiles_update=$(git pull origin HEAD --dry-run)
-  submodules_update=$(cd "$DOTFILES" && git submodule update "$1" --init --recursive --remote)
+  dotfiles_update=$(git pull origin HEAD)
+  submodules_update=$(cd "$DOTFILES" && git submodule update --init --recursive --remote)
 
   if [[ -n "$dotfiles_update" ]]; then
-    dotfiles_update=$(git pull origin HEAD)
     print "${bg_bold[blue]} Dotfiles updated\! ${reset_color}"
     print "$dotfiles_update\n"
   fi
