@@ -1,4 +1,10 @@
-/.DS_Store/
+.DS_Store/
+
+venv/
+__pycache__/
+
+# Setup
+/install/created_timestamp.txt
 
 # Generated when checking for updates
 /utils/update.txt

@@ -1,7 +1,11 @@
 # .dotfiles
 
-##Install Directions
-Run the `deploy.zsh` script and follow the prompts.
+## Install Directions
+Run the `install` script inside the `dotfiles/install` directory and follow the prompts.
+```shell
+$ cd dotfiles/install
+$ ./install
+```
 
 
 ## General

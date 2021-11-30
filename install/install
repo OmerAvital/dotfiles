@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+starting_dir=$(pwd)
+UNAME_MACHINE="$(/usr/bin/uname -m)"
+
+ESC="\033"
+BOLD="${ESC}[1m"
+RED="${ESC}[38;5;1m"
+YELLOW="${ESC}[38;5;3m"
+RESET="${ESC}[0m"
+
+function error() {
+  printf "$BOLD$RED$1$RESET\n"
+}
+
+function warn() {
+  printf "$BOLD$YELLOW$1$RESET\n"
+}
+
+function fatal_error() {
+  error "$1"
+  exit 1
+}
+
+# Only run on MacOS and Linux
+if [ "$(uname)" = "Linux" ]; then
+  IS_ON_LINUX=true
+elif [ "$(uname)" != "Darwin" ]; then
+  fatal_error "Omer's dotfiles are only supported on Linux and MacOS at the moment."
+fi
+
+## Install homebrew
+#if ! [ $IS_ON_LINUX ] || [ "$UNAME_MACHINE" = "x86_64" ]; then
+#  if ! which brew > /dev/null; then
+#    echo "Installing homebrew..."
+#    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#  else
+#    echo "Homebrew already installed, checking for updates."
+#    brew update
+#  fi
+#else
+#  warn "Homebrew doesn't support only supports Linux on Intel, skipping homebrew installation"
+#fi
+#
+## Install python
+#if ! which python3.10 > /dev/null || ! python3.10 -m venv -h > /dev/null; then
+#  if [ $IS_ON_LINUX ]; then
+#      sudo apt install python3.10
+#      sudo apt install python3.10-venv
+#      sudo update-alternatives --install "$(which python3)" python3 "$(which python3.10)" 10
+#  else
+#      brew install python@3.10
+#      brew link python@3.10
+#      brew install coreutils
+#  fi
+#fi
+
+cur_location=$(dirname "$(realpath "$starting_dir/$0")")
+cd "$cur_location" || fatal_error "Error line $LINENO: Could not cd to $cur_location"
+python3.10 -m venv venv
+source venv/bin/activate
+pip3.10 install -r requirements.txt 1> /dev/null
+python3.10 src/install.py --IS_ON_LINUX "$IS_ON_LINUX" --UNAME_MACHINE "$UNAME_MACHINE" $@
+#rm -rf venv
+cd "$starting_dir" || fatal_error "Error line $LINENO: Could not cd to $starting_dir"

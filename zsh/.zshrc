@@ -3,10 +3,6 @@ autoload -U colors && colors
 # UPDATE
 source "$DOTFILES/utils/update.zsh"
 
-# PATH
-export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$HOME/.yarn/bin:$PATH"
-
 # HISTORY
 export HISTFILE="$DOTFILES/zsh/.zsh_history"
 export SAVEHIST=1000000000 # Number of lines to keep in history file

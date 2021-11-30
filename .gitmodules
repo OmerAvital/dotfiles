@@ -4,6 +4,3 @@
 [submodule "zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "zsh/plugins/--force"]
-	path = zsh/plugins/--force
-	url = https://github.com/zsh-users/zsh-autosuggestions
