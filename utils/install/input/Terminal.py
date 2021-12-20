@@ -62,6 +62,9 @@ class StyledStr:
     def __len__(self):
         return len(self.content)
 
+    def __add__(self, other):
+        return str(self) + str(other)
+
 
 class Styling:
     RESET_ALL = Style(f'{Terminal.ESC}[0m')
@@ -115,15 +118,19 @@ class Styling:
         return Style(f'{Terminal.ESC}[48;5;{Styling.__validate_color(color)}m', f'{Terminal.ESC}[49m')
 
 
-class Coordinate(TypedDict):
+class Coordinate:
     col: int
     row: int
+
+    def __init__(self, col: int, row: int):
+        self.col = col
+        self.row = row
 
 
 class Cursor:
     @staticmethod
     def to(pos: Coordinate):
-        Terminal.send(f'{Terminal.ESC}[{pos["row"]};{pos["col"]}H')
+        Terminal.send(f'{Terminal.ESC}[{pos.row};{pos.col}H')
 
     @staticmethod
     def move_up(n=1):
@@ -201,5 +208,5 @@ class Cursor:
             else:
                 termios.tcsetattr(sys.stdin, termios.TCSAFLUSH, old_stdin_mode)
         if res:
-            return {'col': int(res.group("x")), 'row': int(res.group("y"))}
-        return {'col': -1, 'row': -1}
+            return Coordinate(int(res.group("x")), int(res.group("y")))
+        return Coordinate(-1, -1)

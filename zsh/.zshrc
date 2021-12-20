@@ -1,7 +1,7 @@
 autoload -U colors && colors
 
 # UPDATE
-source "$DOTFILES/utils/update.zsh"
+source "$DOTFILES/utils/update/update.zsh"
 
 # HISTORY
 export HISTFILE="$DOTFILES/zsh/.zsh_history"

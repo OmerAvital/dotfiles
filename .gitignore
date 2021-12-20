@@ -1,15 +1,15 @@
+# General
 .DS_Store/
-
 venv/
 __pycache__/
 
 # Setup
-/install/created_timestamp.txt
+utils/install/created_timestamp.txt
 
 # Generated when checking for updates
-/utils/update.txt
-/nohup.out
+utils/update.txt
+nohup.out
 
 # History files
-/zsh/.zsh_history
-/vim/.viminfo
+zsh/.zsh_history
+vim/.viminfo
