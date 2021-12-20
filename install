@@ -1,0 +1,52 @@
+#!/usr/bin/env zsh
+
+starting_dir=$(pwd)
+
+ESC="\033"
+BOLD="${ESC}[1m"
+RED="${ESC}[38;5;1m"
+YELLOW="${ESC}[38;5;3m"
+RESET="${ESC}[0m"
+
+function error() {
+  printf "$BOLD$RED$1$RESET\n"
+}
+
+function warn() {
+  printf "$BOLD$YELLOW$1$RESET\n"
+}
+
+function fatal_error() {
+  error "$1"
+  exit 1
+}
+
+if [ "$(uname)" != "Darwin" ]; then
+  fatal_error "Omer's dotfiles are only supported on MacOS."
+fi
+
+# Install homebrew
+if ! which brew > /dev/null; then
+  echo "Installing homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Install python & venv
+if ! which python3.10 > /dev/null || ! python3.10 -m venv -h > /dev/null; then
+    brew install python@3.10
+    brew link python@3.10
+fi
+
+# Install coreutils
+if ! which gls > /dev/null; then
+    brew install coreutils
+fi
+
+install_dir=$(dirname "$(realpath "$starting_dir/$0")")/utils/install/
+cd "$install_dir" || fatal_error "Error line $LINENO: Could not cd to $install_dir"
+python3.10 -m venv venv
+source venv/bin/activate
+pip3.10 install -r requirements.txt 1> /dev/null
+python3.10 install.py
+rm -rf venv
+cd "$starting_dir" || fatal_error "Error line $LINENO: Could not cd to $starting_dir"

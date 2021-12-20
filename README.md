@@ -1,7 +1,10 @@
 # .dotfiles
 
-##Install Directions
-Run the `deploy.zsh` script and follow the prompts.
+## Deploy Directions
+To deploy the dotfiles, run the following command:
+```zsh
+$ dotfiles/install
+```
 
 
 ## General
@@ -20,27 +23,27 @@ Run the `deploy.zsh` script and follow the prompts.
 - `.zsh_history` moved to `$DOTFILES/zsh/` (to avoid cluttering the home directory).
 
 ### Aliases:
-| Name | Command | Description |
-|------|---------|-------------|
-| `ll` | `ls -l` | List files in the long format. |
-| `la` | `ls -A` | Include directory entries whose names begin with a dot (`.`) except for `.` and `..`. |
-| `l` | `ls -la` | List all files (including those starting with `.` and `..`, and `.` & `..`) in the long format |
-| `now` | `date +%s` | Prints the date in milliseconds |
-| `nowt` | `date +"%Y-%m-%d %T"` | Prints the date in the `YY-MM-DD HH:MM` format. |
-| `copy` | `pbcopy` |
-| `paste` | `pbpaste` |
-| `gs` | `git status -s -b` | Prints the status of the current branch in the short format. |
+| Name    | Command               | Description                                                                                    |
+|---------|-----------------------|------------------------------------------------------------------------------------------------|
+| `ll`    | `ls -l`               | List files in the long format.                                                                 |
+| `la`    | `ls -A`               | Include directory entries whose names begin with a dot (`.`) except for `.` and `..`.          |
+| `l`     | `ls -la`              | List all files (including those starting with `.` and `..`, and `.` & `..`) in the long format |
+| `now`   | `date +%s`            | Prints the date in milliseconds                                                                |
+| `nowt`  | `date +"%Y-%m-%d %T"` | Prints the date in the `YY-MM-DD HH:MM` format.                                                |
+| `copy`  | `pbcopy`              |
+| `paste` | `pbpaste`             |
+| `gs`    | `git status -s -b`    | Prints the status of the current branch in the short format.                                   |
 
 ### Functions:
-| Name | Description |
-|------|------------|
-| `h $1` | Prints out the command history for the last `$1` commands. |
-| `clrs` | Prints out all of the foreground/background colors from 1-255 that can be used. |
-| `tab` | Creates a new terminal tab¹. |
-| `split_tab` | Creates a vertical split¹. |
-| `hsplit_tab` | Creates a horizontal split¹. |
-| `pfd` | Prints the directory of the frontmost `Finder` window. |
-| `cfd` | `cd`'s to the directory of the frontmost `Finder` window. |
+| Name         | Description                                                                     |
+|--------------|---------------------------------------------------------------------------------|
+| `h $1`       | Prints out the command history for the last `$1` commands.                      |
+| `clrs`       | Prints out all of the foreground/background colors from 1-255 that can be used. |
+| `tab`        | Creates a new terminal tab¹.                                                    |
+| `split_tab`  | Creates a vertical split¹.                                                      |
+| `hsplit_tab` | Creates a horizontal split¹.                                                    |
+| `pfd`        | Prints the directory of the frontmost `Finder` window.                          |
+| `cfd`        | `cd`'s to the directory of the frontmost `Finder` window.                       |
 
 ¹Works in terminal, iTerm, iTerm2, and Hyper
 
@@ -53,8 +56,6 @@ Run the `deploy.zsh` script and follow the prompts.
 
 
 ## TODO
-###General
-- Install homebrew, python, node, etc. on install.
 
 ###VIM
 - Code completion in Vim

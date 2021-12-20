@@ -1,4 +1,4 @@
-update_txt_file=$DOTFILES/utils/update.txt
+update_txt_file=$DOTFILES/utils/update/update.txt
 
 update_dotfiles() {
   _cur_dir=$(pwd)

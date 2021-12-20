@@ -1,11 +1,7 @@
 autoload -U colors && colors
 
 # UPDATE
-source "$DOTFILES/utils/update.zsh"
-
-# PATH
-export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$HOME/.yarn/bin:$PATH"
+source "$DOTFILES/utils/update/update.zsh"
 
 # HISTORY
 export HISTFILE="$DOTFILES/zsh/.zsh_history"
