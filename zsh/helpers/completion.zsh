@@ -9,7 +9,7 @@ zstyle :compinstall filename '/Users/omeravital/completion.sh'
 
 # Homebrew completion
 if type brew &>/dev/null; then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  FPATH="$(brew_prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
 autoload -Uz compinit
