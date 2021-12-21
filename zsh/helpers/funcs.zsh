@@ -9,14 +9,6 @@ h() {
   history -f -$1
 }
 
-_print_fg() {
-  printf "\e[38;5;%sm%3s " $1 $1;
-}
-
-_print_bg() {
-  printf "\e[48;5;%sm%3s " $1 $1;
-}
-
 # Times the ZSH startup 10 times
 timezsh() {
   local shell
@@ -26,7 +18,15 @@ timezsh() {
   done
 }
 
+brew_prefix() {
+  dirname "$(dirname "$(which brew)")"
+}
+
 clrs() {
+  _print_fg() { printf "\e[38;5;%sm%3s " $1 $1; }
+
+  _print_bg() { printf "\e[48;5;%sm%3s " $1 $1; }
+
   # https://www.ditig.com/256-colors-cheat-sheet
   # FOREGROUND COLORS
   # Standard colors

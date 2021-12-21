@@ -14,16 +14,16 @@ precmd() {
   vcs_info
 }
 # https://arjanvandergaag.nl/blog/customize-zsh-prompt-with-vcs-info.html
+# https://zsh.sourceforge.io/Doc/Release/User-Contributions.html#Version-Control-Information
 zstyle ':vcs_info:git:*' formats "%
 %B%F{blue}%s:(%
-%{${reset_color}%}%F{#fff}%r %
-%B%F{red}%b%
-%F{blue})"
+%F{red}%b%
+%F{blue}) "
 
-PROMPT_GIT='${vcs_info_msg_0_}${prompt_reset} '
+PROMPT_GIT='${vcs_info_msg_0_}${prompt_reset}'
 
 # SUDO
-RPROMPT_SUDO="%(#.%B%K{yellow}sudo${prompt_reset}.)"
+RPROMPT_SUDO="%(!.%B%K{yellow}sudo${prompt_reset}.)"
 
 # ARROW
 PROMPT_ARROW="%B%F{%(?.green.red)}▶${prompt_reset} "
