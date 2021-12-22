@@ -14,4 +14,5 @@ __update() {
   fi
 }
 
-(nohup "$(__update)" & exit) 2> /dev/null
+# don't create nohup.out file
+(nohup "$(__update)" > /dev/null 2>&1 &) 2> /dev/null
