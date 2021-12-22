@@ -3,7 +3,6 @@ update_dotfiles() {
   cd "$DOTFILES" || return 1
   local submodules_update
 
-  # Fetch dry run first because pull always produces output
   UPSTREAM=${1:-'@{u}'}
   LOCAL=$(git rev-parse @)
   REMOTE=$(git rev-parse "$UPSTREAM")
@@ -11,14 +10,14 @@ update_dotfiles() {
 
   if [ "$LOCAL" = "$REMOTE" ]; then
       # up to date
-      pass
+      print ""
   elif [ "$LOCAL" = "$BASE" ]; then
     # need to pull
     print "${bg_bold[blue]} Dotfiles updated\! ${reset_color}"
     git pull origin HEAD
   elif [ "$REMOTE" = "$BASE" ]; then
       # need to push
-      pass
+      print ""
   fi
   submodules_update=$(cd "$DOTFILES" && git submodule update --init --recursive --remote)
 
