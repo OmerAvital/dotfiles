@@ -7,8 +7,7 @@ __pycache__/
 utils/install/created_timestamp.txt
 
 # Generated when checking for updates
-utils/update.txt
-nohup.out
+utils/update/update.txt
 
 # History files
 zsh/.zsh_history

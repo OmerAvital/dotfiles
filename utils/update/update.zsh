@@ -1,18 +1,30 @@
 update_txt_file=$DOTFILES/utils/update/update.txt
 
-source "$DOTFILES/utils/update/_update.zsh"
+update_dotfiles() {
+  cur_dir=$(pwd)
+  cd "$DOTFILES" || return 1
 
-if [[ -s "$update_txt_file" ]]; then
+  # Fetch dry run first because pull always produces output
+  git fetch --dry-run &> "$update_txt_file"
+  if [ -s "$update_txt_file" ]; then
+    rm "$update_txt_file"
+    echo "${bg_bold[blue]} Dotfiles updated! ${reset_color}" > "$update_txt_file"
+    git pull --all &>> "$update_txt_file"
+  fi
+
+  submodules_update=$(cd "$DOTFILES" && git submodule update --init --recursive --remote)
+  if [ -n "$submodules_update" ]; then
+      echo "${bg_bold[blue]} Submodules updated! ${reset_color}" >> "$update_txt_file"
+      echo "$submodules_update" >> "$update_txt_file"
+  fi
+
+  cd "$cur_dir" || return 1
+  return 0
+}
+
+if [ -s "$update_txt_file" ]; then
   cat "$update_txt_file"
   rm "$update_txt_file"
 fi
 
-__update() {
-  update_results=$(update_dotfiles)
-  if [[ -n "$update_results" ]]; then
-    print "$update_results" > "$update_txt_file"
-  fi
-}
-
-# don't create nohup.out file
-(nohup "$(__update)" > /dev/null 2>&1 &) 2> /dev/null
+(nohup "$(update_dotfiles)" & exit) 2> /dev/null
