@@ -59,3 +59,6 @@ with open(f'{HOME}/.zshenv', 'w') as zshenv, open(f'{HOME}/.zshrc', 'w') as zshr
     zshenv.write(f'source {dotfiles_dir}/zsh/.zshprofile\n')
     zshrc.write('source $DOTFILES/zsh/.zshrc\n')
     vimrc.write('source $DOTFILES/vim/.vimrc\n')
+
+Terminal.send(StyledStr('Configuring git', fg=Styling.BLACK, bg=Styling.WHITE, style=Styling.BOLD), end='\n')
+os.system('$DOTFILES/git/initial-config.zsh')

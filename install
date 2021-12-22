@@ -42,7 +42,11 @@ if ! which gls > /dev/null; then
     brew install coreutils
 fi
 
-install_dir=$(dirname "$(realpath "$starting_dir/$0")")/utils/install/
+dotfiles_dir=$(dirname "$(realpath "$starting_dir/$0")")
+cd "$dotfiles_dir" || fatal_error "Could not cd to $dotfiles_dir"
+git branch main --set-upstream-to=origin/main
+
+install_dir=$dotfiles_dir/utils/install/
 cd "$install_dir" || fatal_error "Error line $LINENO: Could not cd to $install_dir"
 python3.10 -m venv venv
 source venv/bin/activate
