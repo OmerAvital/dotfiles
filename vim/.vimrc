@@ -2,7 +2,7 @@
 set viminfofile=$DOTFILES/vim/.viminfo
 
 set rtp^=$DOTFILES/vim
-
+colorscheme atom-dark-256
 
 " PREFERENCES ----------------------------------------------------------------
 " Disable compatibility with vi which can cause unexpected issues.
