@@ -1,18 +1,21 @@
 # .dotfiles
 
 ## Deploy Directions
+
 To deploy the dotfiles, run the following command:
-```zsh
+
+```shell
 $ dotfiles/install
 ```
 
-
 ## General
+
 - Auto-updates dotfiles and plugins
 
-
 ## ZSH
+
 ### Enhancements
+
 - Enhanced ZSH prompt
 - Enhanced completions
 - Syntax highlighting
@@ -23,6 +26,7 @@ $ dotfiles/install
 - `.zsh_history` moved to `$DOTFILES/zsh/` (to avoid cluttering the home directory).
 
 ### Aliases:
+
 | Name    | Command               | Description                                                                                    |
 |---------|-----------------------|------------------------------------------------------------------------------------------------|
 | `ll`    | `ls -l`               | List files in the long format.                                                                 |
@@ -30,11 +34,12 @@ $ dotfiles/install
 | `l`     | `ls -la`              | List all files (including those starting with `.` and `..`, and `.` & `..`) in the long format |
 | `now`   | `date +%s`            | Prints the date in milliseconds                                                                |
 | `nowt`  | `date +"%Y-%m-%d %T"` | Prints the date in the `YY-MM-DD HH:MM` format.                                                |
-| `copy`  | `pbcopy`              |
-| `paste` | `pbpaste`             |
+| `copy`  | `pbcopy`              |                                                                                                |
+| `paste` | `pbpaste`             |                                                                                                |
 | `gs`    | `git status -s -b`    | Prints the status of the current branch in the short format.                                   |
 
 ### Functions:
+
 | Name         | Description                                                                     |
 |--------------|---------------------------------------------------------------------------------|
 | `h $1`       | Prints out the command history for the last `$1` commands.                      |
@@ -47,17 +52,16 @@ $ dotfiles/install
 
 ¹Works in terminal, iTerm, iTerm2, and Hyper
 
-
 ## Vim
+
 ### Enhancements
+
 - Syntax highlighting
 - `.viminfo` moved to `$DOTFILES/vim/`(to avoid cluttering the home directory).
 - Looks for colors and plugins in `$DOTFILES/vim/` in addition to the default locations.
 
-
 ## TODO
 
-###VIM
-- Code completion in Vim
-- Choose (or create) color theme
+### VIM
 
+- Code completion in Vim
