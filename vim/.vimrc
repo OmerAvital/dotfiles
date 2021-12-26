@@ -1,8 +1,16 @@
 " Set .viminfo file location to the .dotfiles directory
 set viminfofile=$DOTFILES/vim/.viminfo
 
+" COLORSCHEME ----------------------------------------------------------------
 set rtp^=$DOTFILES/vim
 colorscheme atom-dark-256
+
+
+" CURSOR --------------------------------------------------------------------
+let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
+let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
+let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
+
 
 " PREFERENCES ----------------------------------------------------------------
 " Disable compatibility with vi which can cause unexpected issues.
