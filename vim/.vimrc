@@ -7,9 +7,9 @@ colorscheme atom-dark-256
 
 
 " CURSOR --------------------------------------------------------------------
-let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
-let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
-let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
+let &t_SI = "\<esc>[6 q"  " I-beam in insert mode
+let &t_SR = "\<esc>[4 q"  " underline in replace mode
+let &t_EI = "\<esc>[2 q"  " default cursor (usually blinking block) otherwise
 
 
 " PREFERENCES ----------------------------------------------------------------
