@@ -60,8 +60,14 @@ $ dotfiles/install
 - `.viminfo` moved to `$DOTFILES/vim/`(to avoid cluttering the home directory).
 - Looks for colors and plugins in `$DOTFILES/vim/` in addition to the default locations.
 
-## TODO
+## Git
 
-### VIM
+### Enhancements
+- Prevent committing to main/master branch
 
-- Code completion in Vim
+### Signing commits (verified commits)
+- Follow [these instructions][signing-commits].
+
+
+[signing-commits]:
+    git/signing-commits.md
