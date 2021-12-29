@@ -27,4 +27,4 @@ if [ -s "$update_txt_file" ]; then
   rm "$update_txt_file"
 fi
 
-(nohup "$(update_dotfiles)" & exit) 2> /dev/null
+(nohup "$(update_dotfiles)" < /dev/null > /dev/null 2>&1 &) &> /dev/null
