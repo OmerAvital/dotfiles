@@ -18,7 +18,7 @@ $ gpg --full-generate-key
 a) Choose option 1: RSA and RSA\
 b) Enter `4096` bits\
 c) Enter time for key to expire (`enter` to not expire)\
-d) Enter email (`76176305+omer8374@users.noreply.github.com`)\
+d) Enter email (`76176305+OmerAvital@users.noreply.github.com`)\
 e) Type a secure passphrase.
 
 ## 3. Add the key to GitHub
