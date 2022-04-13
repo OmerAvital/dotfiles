@@ -23,6 +23,8 @@ source "$DOTFILES/zsh/helpers/prompt.zsh"
 source "$DOTFILES/zsh/helpers/completion.zsh"
 # Colored man pages
 source "$DOTFILES/zsh/helpers/colored-man-pages.zsh"
+# thefuck
+eval $(thefuck --alias)
 
 # PLUGINS ---------------------------------------------------------------------
 # autosuggestions

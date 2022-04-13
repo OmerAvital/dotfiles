@@ -31,6 +31,7 @@ apps = [
     ListOption('deno', is_selected=True),
     ListOption('gh', is_selected=True),
     ListOption('alfred', is_selected=True),
+    ListOption('thefuck', is_selected=True),
 ]
 
 apps_to_install = List('Which apps do you want to install through Homebrew?', apps, list_type=List.MULTI_SELECT).get_input()
