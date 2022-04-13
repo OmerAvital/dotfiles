@@ -11,6 +11,14 @@ setopt INC_APPEND_HISTORY # Immediately append to .zsh_history
 setopt EXTENDED_HISTORY # Add timestamp to history
 setopt HIST_FIND_NO_DUPS # No duplicates when navigating history with arrows
 
+# THEFUCK
+# https://github.com/nvbn/thefuck/issues/859#issue-388147791
+if command -v thefuck >/dev/null 2>&1; then
+  fuck() {
+    eval "$(thefuck --alias)" && fuck
+  }
+fi
+
 # macos
 source "$DOTFILES/zsh/helpers/macos.zsh"
 # aliases
@@ -23,8 +31,6 @@ source "$DOTFILES/zsh/helpers/prompt.zsh"
 source "$DOTFILES/zsh/helpers/completion.zsh"
 # Colored man pages
 source "$DOTFILES/zsh/helpers/colored-man-pages.zsh"
-# thefuck
-eval $(thefuck --alias)
 
 # PLUGINS ---------------------------------------------------------------------
 # autosuggestions
