@@ -3,6 +3,5 @@
 branch="$(git rev-parse --abbrev-ref HEAD)"
 
 if [ "$branch" = "master" ] || [ "$branch" = "main" ]; then
-  echo "ERROR: You can't commit directly to $branch branch"
-  exit 1
+  echo "Warning: You should not commit directly to $branch branch, it is bad practice!"
 fi
