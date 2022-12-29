@@ -17,7 +17,7 @@ class ListOption:
         self.text = text
         self.value = value if value is not None else text
         self.__is_selected = is_selected
-        self.type = List.DEFAULT  # default
+        self.type = List.DEFAULT
 
     def toggle(self):
         self.__is_selected = not self.__is_selected

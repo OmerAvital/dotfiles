@@ -19,14 +19,13 @@ apps = [
     ListOption('iterm2', is_selected=True),
     ListOption('jetbrains-toolbox', is_selected=True),
     ListOption('setapp', is_selected=True),
-    ListOption('silicon-info'),
     ListOption('whatsapp', is_selected=True),
     ListOption('zoom', is_selected=True),
     ListOption('rectangle', is_selected=True),
     ListOption('visual-studio-code', is_selected=True),
     ListOption('funter', is_selected=True),
-    ListOption('firefox'),
-    ListOption('firefox-developer-edition', is_selected=True),
+    ListOption('firefox', is_selected=True),
+    ListOption('firefox-developer-edition'),
     ListOption('node', is_selected=True),
     ListOption('deno', is_selected=True),
     ListOption('gh', is_selected=True),
@@ -57,7 +56,12 @@ backup_file('.vimrc')
 
 Terminal.send(StyledStr('Creating dotfiles in home directory...', fg='green'), end='\n')
 with open(f'{HOME}/.zshenv', 'w') as zshenv, open(f'{HOME}/.zshrc', 'w') as zshrc, open(f'{HOME}/.vimrc', 'w') as vimrc:
-    zshenv.write(f'source {dotfiles_dir}/zsh/.zshprofile\n')
+    zshenv_contents = '''PATH="/opt/homebrew/bin:${{PATH}}"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+source {}/zsh/.zshenv
+'''.format(dotfiles_dir)
+
+    zshenv.write(str(zshenv))
     zshrc.write('source $DOTFILES/zsh/.zshrc\n')
     vimrc.write('source $DOTFILES/vim/.vimrc\n')
 

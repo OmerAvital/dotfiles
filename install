@@ -1,10 +1,13 @@
 #!/usr/bin/env zsh
 
 starting_dir=$(pwd)
+dotfiles_dir=$(dirname "$(realpath "$starting_dir/$0")")
+install_dir=$dotfiles_dir/utils/install/
 
 ESC="\033"
 BOLD="${ESC}[1m"
 RED="${ESC}[38;5;1m"
+GREEN="${ESC}[38;5;2m"
 YELLOW="${ESC}[38;5;3m"
 RESET="${ESC}[0m"
 
@@ -16,8 +19,13 @@ function warn() {
   printf "$BOLD$YELLOW$1$RESET\n"
 }
 
+function announce() {
+  printf "$BOLD$GREEN$1$RESET\n"
+}
+
 function fatal_error() {
   error "$1"
+  cd "$starting_dir"
   exit 1
 }
 
@@ -25,10 +33,22 @@ if [ "$(uname)" != "Darwin" ]; then
   fatal_error "Omer's dotfiles are only supported on MacOS."
 fi
 
+if [ "$(uname -m)" != "arm64" ]; then
+  fatal_error "Omer's dotfiles are only supported on arm based (M1+) Macs."
+fi
+
+cd "$dotfiles_dir" || fatal_error "Could not cd to $dotfiles_dir"
+
+if ( ! git status &> /dev/null ); then
+  fatal_error "You must download the tracked git version of the dotfiles."
+fi
+
 # Install homebrew
 if ! which brew > /dev/null; then
-  echo "Installing homebrew..."
+  announce "Installing homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  PATH="/opt/homebrew/bin:${PATH}"
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -43,11 +63,10 @@ if ! which gls > /dev/null; then
     brew install coreutils
 fi
 
-dotfiles_dir=$(dirname "$(realpath "$starting_dir/$0")")
-cd "$dotfiles_dir" || fatal_error "Could not cd to $dotfiles_dir"
 git branch main --set-upstream-to=origin/main
+# Download submodules
+git submodule update --init --recursive
 
-install_dir=$dotfiles_dir/utils/install/
 cd "$install_dir" || fatal_error "Error line $LINENO: Could not cd to $install_dir"
 python3.10 -m venv venv
 source venv/bin/activate
