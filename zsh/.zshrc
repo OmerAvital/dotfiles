@@ -13,24 +13,24 @@ setopt HIST_FIND_NO_DUPS # No duplicates when navigating history with arrows
 
 # THEFUCK
 # https://github.com/nvbn/thefuck/issues/859#issue-388147791
-if command -v thefuck >/dev/null 2>&1; then
+if command -v thefuck > /dev/null 2>&1; then
   fuck() {
     eval "$(thefuck --alias)" && fuck
   }
 fi
 
 # macos
-source "$DOTFILES/zsh/helpers/macos.zsh"
+source "$DOTFILES/zsh/macos.zsh"
 # aliases
-source "$DOTFILES/zsh/helpers/aliases.zsh"
+source "$DOTFILES/zsh/aliases.zsh"
 # functions
-source "$DOTFILES/zsh/helpers/funcs.zsh"
+source "$DOTFILES/zsh/funcs.zsh"
 # prompt
-source "$DOTFILES/zsh/helpers/prompt.zsh"
+source "$DOTFILES/zsh/prompt.zsh"
 # completion
-source "$DOTFILES/zsh/helpers/completion.zsh"
+source "$DOTFILES/zsh/completion.zsh"
 # Colored man pages
-source "$DOTFILES/zsh/helpers/colored-man-pages.zsh"
+source "$DOTFILES/zsh/colored-man-pages.zsh"
 
 # PLUGINS ---------------------------------------------------------------------
 # autosuggestions

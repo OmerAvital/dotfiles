@@ -10,6 +10,8 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
       <excludeFolder url="file://$MODULE_DIR$/utils/install/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/zsh/plugins/zsh-autosuggestions" />
+      <excludeFolder url="file://$MODULE_DIR$/zsh/plugins/zsh-syntax-highlighting" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.10 (.dotfiles)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

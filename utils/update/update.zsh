@@ -12,13 +12,14 @@ update_dotfiles() {
     git pull --all &>> "$update_txt_file"
   fi
 
-  submodules_update=$(cd "$DOTFILES" && git submodule update --init --recursive --remote)
+  cd "$DOTFILES" &> /dev/null || return 1
+  submodules_update=$(git submodule update --init --recursive --remote)
   if [ -n "$submodules_update" ]; then
       echo "${bg_bold[blue]} Submodules updated! ${reset_color}" >> "$update_txt_file"
       echo "$submodules_update" >> "$update_txt_file"
   fi
 
-  cd "$cur_dir" || return 1
+  cd "$cur_dir" &> /dev/null || return 1
   return 0
 }
 
