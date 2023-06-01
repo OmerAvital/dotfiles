@@ -12,3 +12,6 @@ utils/update/update.txt
 # History files
 zsh/.zsh_history
 vim/.viminfo
+
+# Jetbrains
+.idea
