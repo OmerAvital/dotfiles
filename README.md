@@ -5,7 +5,7 @@
 To deploy the dotfiles, run the following command:
 
 ```shell
-$ dotfiles/install
+/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/OmerAvital/dotfiles/main/utils/install/install.zsh)"
 ```
 
 ## General

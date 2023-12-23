@@ -3,5 +3,5 @@
 branch="$(git rev-parse --abbrev-ref HEAD)"
 
 if [ "$branch" = "master" ] || [ "$branch" = "main" ]; then
-  echo "Warning: You should not commit directly to $branch branch, it is bad practice!"
+  echo "${bg[yellow]}${fg[black]} Warning: You should not commit directly to $branch branch, it is bad practice! ${reset_color}"
 fi

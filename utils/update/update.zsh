@@ -1,14 +1,14 @@
 update_txt_file=$DOTFILES/utils/update/update.txt
 
 update_dotfiles() {
-  cur_dir=$(pwd)
-  cd "$DOTFILES" || return 1
-
   # Check for internet connection
   if ! (ping -c 1 google.com > /dev/null); then
     rm "$update_txt_file"
     return 0
   fi
+
+  cur_dir=$(pwd)
+  cd "$DOTFILES" || return 1
 
   # Fetch dry run first because pull always produces output
   if ! (git fetch --dry-run &> "$update_txt_file"); then
